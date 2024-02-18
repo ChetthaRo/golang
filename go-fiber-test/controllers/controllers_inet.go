@@ -158,7 +158,7 @@ func GetDog(c *fiber.Ctx) error {
 	search := strings.TrimSpace(c.Query("search"))
 	var dog []m.Dogs
 
-	result := db.Find(&dog, "dog_id = ?", search)
+	result := db.Where("dog_id = ? OR name = ?", search, search).Find(&dog)
 
 	// returns found records count, equals `len(users)
 	if result.RowsAffected == 0 {

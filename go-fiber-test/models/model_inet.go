@@ -1,6 +1,10 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Person struct {
 	Name string `json:"name"`
@@ -55,4 +59,34 @@ type Company struct {
 	SubDisTrict string `json:"subdistrict"`
 	DisTrict    string `json:""`
 	ZipCode     string `json:"zipcode"`
+}
+
+type Profile struct {
+	gorm.Model
+	EmployeeId  int       `json:"employee_id"`
+	Name        string    `json:"name"`
+	LastName    string    `json:"lastname" `
+	BirthdayStr string    `json:"birthdaystr"`
+	Birthday    time.Time `json:"-" `
+	Age         int       `json:"age"`
+	Email       string    `json:"email"`
+	Tel         string    `json:"tel"`
+}
+
+type ResultProfile struct {
+	Data          []ProfileRes `json:"data"`
+	Name          string       `json:"name"`
+	Count         int          `json:"count"`
+	SumGenZ       int          `json:"sumgenz"`
+	SumGenY       int          `json:"sumgeny"`
+	SumpGenX      int          `json:"sumgenx"`
+	SumBabyBoomer int          `json:"sumbabyboomer"`
+	SumGeneration int          `json:"sumgeneration"`
+}
+
+type ProfileRes struct {
+	Name      string `json:"name"`
+	ProfileId int    `json: "profile_id"`
+	Age       int    `json:"age"`
+	Type      string `json:"type"`
 }
