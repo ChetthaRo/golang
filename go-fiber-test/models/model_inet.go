@@ -57,7 +57,7 @@ type Company struct {
 	WebSite     string `json:"wepsite" validate:"required,min=2,max=30"`
 	ProVince    string `json:"province"`
 	SubDisTrict string `json:"subdistrict"`
-	DisTrict    string `json:""`
+	DisTrict    string `json:"disTrict"`
 	ZipCode     string `json:"zipcode"`
 }
 
